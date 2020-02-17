@@ -1,0 +1,48 @@
+
+// Rate definitions
+// rates starting with r are actual or original processing rates
+// rates starting with p are perturbed processing rates
+r1 = 0.256; r2 = 0.128; r3 = 0.256; r4 = 0.128; r5 = 0.154; r6 = 0.385; r7 = 0.256; r8 = 0.192; r9 = 0.154; r10 = 0.128;
+r11 = 0.192; r12 = 0.154; r13 = 0.128; r14 = 0.192; r15 = 0.128; r16 = 0.385; r17 = 0.154; r18 = 0.192; r19 = 0.128; r20 = 0.154;
+p1 = 0.104; p2 = 0.128; p3 = 0.256; p4 = 0.128; p5 = 0.138; p6 = 0.156; p7 = 0.256; p8 = 0.192; p9 = 0.062; p10 = 0.091;
+p11 = 0.167; p12 = 0.192; p13 = 0.128; p14 = 0.192; p15 = 0.112; p16 = 0.385; p17 = 0.107; p18 = 0.147; p19 = 0.128; p20 = 0.102;
+
+
+
+
+// Application definitions 
+//App = (A1 || A2 || A3 || A4 || A5 || A6 || A7 || A8 || A9 || A10 || A11 || A12 || A13 || A14 || A15 || A16 || A17 || A18 || A19 || A20).App;
+A1 = (compute1, infty).A1;
+A2 = (compute2, infty).A2;
+A3 = (compute3, infty).A3;
+A4 = (compute4, infty).A4;
+A5 = (compute5, infty).A5;
+A6 = (compute6, infty).A6;
+A7 = (compute7, infty).A7;
+A8 = (compute8, infty).A8;
+A9 = (compute9, infty).A9;
+A10 = (compute10, infty).A10;
+A11 = (compute11, infty).A11;
+A12 = (compute12, infty).A12;
+A13 = (compute13, infty).A13;
+A14 = (compute14, infty).A14;
+A15 = (compute15, infty).A15;
+A16 = (compute16, infty).A16;
+A17 = (compute17, infty).A17;
+A18 = (compute18, infty).A18;
+A19 = (compute19, infty).A19;
+A20 = (compute20, infty).A20;
+
+// Machine definition
+//Machine = (M1 || M2 || M3 || M4 || M5).Machine;
+M1 = (compute5, r5).(compute9, r9).(compute12, r12).(compute17, r17).(compute20, r20).M1 + (compute5, p5).(compute9, p9).(compute12, p12).(compute17, p17).(compute20, p20).M1;
+M2 = (compute6, r6).(compute16, r16).M2 + (compute6, p6).(compute16, p16).M2;
+M3 = (compute1, r1).(compute3, r3).(compute7, r7).M3 + (compute1, p1).(compute3, p3).(compute7, p7).M3;
+M4 = (compute2, r2).(compute4, r4).(compute10, r10).(compute13, r13).(compute15, r15).(compute19, r19).M4 + (compute2, p2).(compute4, p4).(compute10, p10).(compute13, p13).(compute15, p15).(compute19, p19).M4;
+M5 = (compute8, r8).(compute11, r11).(compute14, r14).(compute18, r18).M5 + (compute8, p8).(compute11, p11).(compute14, p14).(compute18, p18).M5;
+
+
+// System equation for mapping definition 
+(A1 <> A2 <> A3 <> A4 <> A5 <> A6 <> A7 <> A8 <> A9 <> A10 <> A11 <> A12 <> A13 <> A14 <> A15 <> A16 <> A17 <> A18 <> A19 <> A20) 
+<compute1, compute2, compute3, compute4, compute5, compute6, compute7, compute8, compute9, compute10, compute11, compute12, compute13, compute14, compute15, compute16, compute17, compute18, compute19, compute20> 
+(M1 <> M2 <> M3 <> M4 <> M5)
